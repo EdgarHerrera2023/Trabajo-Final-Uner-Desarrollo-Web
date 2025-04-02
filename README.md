@@ -3,8 +3,8 @@
 
 Apellido | Nombre |  Estado de Estudiante | Usuarios de Github
 -- | -- | -- | --
-Herrera | Edgar   | --Sigue-- | https://gitlab.|
+Coullieri | Romina  | --Sigue-- | https://gitlab.|
 Herrera | Edgar   | --Sigue--| https://gitlab.|
-Herrera |Edgar    |--Sigue--|https://gitlab.com/EdgarHerrera2023|
-Herrera | Edgar   | --Sigue-- | https://gitlab.|
-Herrera |Edgar    |--Sigue--|https://gitlab.com/EdgarHerrera2023|
+Ledesma |Susana   |--Sigue--|https://gitlab.com/EdgarHerrera2023|
+Muñoz | Julieta Alejandra  | --Sigue-- | https://gitlab.|
+Torrez Porco|Eduardo Maria   |--Sigue--|https://gitlab.com/EdgarHerrera2023|
