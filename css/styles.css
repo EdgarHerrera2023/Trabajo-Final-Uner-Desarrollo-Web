@@ -1,0 +1,337 @@
+/* Variables personalizadas - para ser usadas con las clases de Bootstrap */
+:root {
+    /* Colores principales */
+    --bs-primary: #ff5e8a;
+    --bs-primary-rgb: 78, 115, 223;
+    --bs-secondary: #5e3760;
+    --bs-secondary-rgb: 94, 55, 96;
+    --bs-background: #b9a6a6;
+    --bs-background-rgb:60, 100, 200;
+    --bs-success: #00b300;
+    --bs-success-rgb: 0, 179, 0;
+    --bs-danger: #ff0000;
+    --bs-danger-rgb: 255, 0, 0;
+    --bs-light: #f9f9f9;
+    --bs-light-rgb: 249, 249, 249;
+    --bs-dark: #333;
+    --bs-dark-rgb: 51, 51, 51;
+    
+    /* Colores derivados para efectos hover */
+    --bs-primary-hover: #2e59d9;
+    --bs-secondary-hover: #4e2e50;
+}
+
+/* Estilos base */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: var(--bs-dark);
+}
+
+main {
+    flex: 1;
+}
+
+/* Sobrescritura de clases de Bootstrap */
+.bg-primary {
+    background-color: var(--bs-primary) !important;
+}
+
+.bg-secondary {
+    background-color: var(--bs-secondary) !important;
+}
+
+.text-primary {
+    color: var(--bs-primary) !important;
+}
+
+.text-secondary {
+    color: var(--bs-secondary) !important;
+}
+
+.btn-primary {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+    transition: all 0.3s;
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background-color: var(--bs-primary-hover);
+    border-color: var(--bs-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.btn-secondary {
+    background-color: var(--bs-secondary);
+    border-color: var(--bs-secondary);
+    transition: all 0.3s;
+}
+
+.btn-secondary:hover, .btn-secondary:focus {
+    background-color: var(--bs-secondary-hover);
+    border-color: var(--bs-secondary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Navegación */
+.navbar {
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar-brand img {
+    max-height: 80px;
+    transition: transform 0.3s;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+.nav-link {
+    font-weight: 500;
+    position: relative;
+}
+
+.nav-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: var(--bs-primary);
+    left: 0;
+    bottom: 0;
+    transition: width 0.3s;
+}
+
+.nav-link:hover:after {
+    width: 100%;
+}
+
+/* Sección de búsqueda */
+.search-section {
+    background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('../imagenes/background.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Encabezados con línea decorativa */
+.heading-line {
+    position: relative;
+    padding-bottom: 15px;
+    margin-bottom: 25px;
+}
+
+.heading-line::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background-color: var(--bs-primary);
+}
+
+/* Tarjetas y elementos interactivos */
+.card, .salon-card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid #eaeaea;
+}
+
+.card:hover, .salon-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card-img-top {
+    height: 200px;
+    object-fit: cover;
+}
+
+.img-highlight {
+    transition: transform 0.3s ease;
+}
+
+.img-highlight:hover {
+    transform: scale(1.02);
+}
+
+/* Filtros */
+.filter-btn {
+    transition: all 0.3s;
+    margin: 0 5px;
+    border-radius: 30px;
+    padding: 8px 20px;
+}
+
+.filter-btn.active {
+    background-color: var(--bs-primary);
+    color: white;
+}
+
+/* Botones */
+.reserve-btn {
+    width: 100%;
+    border-radius: 5px;
+    transition: all 0.3s;
+}
+
+.reserve-btn:hover:not([disabled]) {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Sección institucional */
+#institucional {
+    position: relative;
+}
+
+#institucional::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, var(--bs-primary), #5e95ff, #ffab00, #a05eff, #5eff95);
+    z-index: 1;
+}
+
+/* Pestañas administrativas */
+.admin-tab-content {
+    display: none;
+}
+
+.admin-tab-content.active {
+    display: block;
+}
+
+#admin-section table {
+    vertical-align: middle;
+}
+
+/* Animaciones */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+    animation: slideUp 0.5s ease-in-out;
+}
+
+/* Sección de contacto */
+.contacto-item i {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Footer */
+footer {
+    background-color: #1a1e2c;
+    color: #f8f9fc;
+    padding: 50px 0 20px;
+}
+
+.footer-title {
+    font-weight: 600;
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.footer-title:after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 2px;
+    background: var(--bs-primary);
+    left: 0;
+    bottom: 0;
+}
+
+.footer-links ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links ul li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #d1d3e2;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-links a:hover {
+    color: #fff;
+}
+
+.footer-social a {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    background: rgba(255,255,255,0.1);
+    border-radius: 50%;
+    margin-right: 10px;
+    color: #fff;
+    transition: all 0.3s;
+}
+
+.footer-social a:hover {
+    background: var(--bs-primary);
+    transform: translateY(-3px);
+}
+
+.payment-methods img {
+    height: 30px;
+    margin: 5px 10px 5px 0;
+    filter: brightness(0) invert(1);
+    opacity: 0.8;
+}
+
+.copyright {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 20px;
+    margin-top: 30px;
+}
+
+/* Media queries */
+@media (max-width: 768px) {
+    .heading-line::after {
+        width: 60px;
+    }
+}
+
+@media (max-width: 576px) {
+    .search-section {
+        padding: 2rem 1rem;
+    }
+}

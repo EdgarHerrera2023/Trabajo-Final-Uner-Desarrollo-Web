@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Administración de Salones</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="p-4 bg-light">
+  <div class="container">
+    <h2 class="mb-4">Administración de Salones</h2>
+
+    <form id="salonForm">
+      <input type="hidden" id="salonId">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del salón</label>
+        <input type="text" class="form-control" id="nombre" required>
+      </div>
+      <div class="mb-3">
+        <label for="ubicacion" class="form-label">Ubicación</label>
+        <input type="text" class="form-control" id="ubicacion" required>
+      </div>
+      <div class="mb-3">
+        <label for="capacidad" class="form-label">Capacidad</label>
+        <input type="number" class="form-control" id="capacidad" required>
+      </div>
+      <button type="submit" class="btn btn-success">Guardar</button>
+    </form>
+
+    <hr>
+
+    <h3>Listado de Salones</h3>
+    <table class="table table-bordered" id="tablaSalones">
+      <thead>
+        <tr>
+          <th>Nombre</th>
+          <th>Ubicación</th>
+          <th>Capacidad</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <script>
+    let salones = JSON.parse(localStorage.getItem('salones')) || [];
+
+    function renderTabla() {
+      const tbody = document.querySelector('#tablaSalones tbody');
+      tbody.innerHTML = '';
+      salones.forEach((salon, index) => {
+        tbody.innerHTML += `
+          <tr>
+            <td>${salon.nombre}</td>
+            <td>${salon.ubicacion}</td>
+            <td>${salon.capacidad}</td>
+            <td>
+              <button class="btn btn-sm btn-warning" onclick="editarSalon(${index})">Editar</button>
+              <button class="btn btn-sm btn-danger" onclick="eliminarSalon(${index})">Eliminar</button>
+            </td>
+          </tr>
+        `;
+      });
+      localStorage.setItem('salones', JSON.stringify(salones));
+    }
+
+    document.getElementById('salonForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+      const id = document.getElementById('salonId').value;
+      const nombre = document.getElementById('nombre').value;
+      const ubicacion = document.getElementById('ubicacion').value;
+      const capacidad = document.getElementById('capacidad').value;
+
+      const salonData = { nombre, ubicacion, capacidad };
+
+      if (id) {
+        salones[id] = salonData;
+      } else {
+        salones.push(salonData);
+      }
+
+      this.reset();
+      document.getElementById('salonId').value = '';
+      renderTabla();
+    });
+
+    function editarSalon(index) {
+      const salon = salones[index];
+      document.getElementById('salonId').value = index;
+      document.getElementById('nombre').value = salon.nombre;
+      document.getElementById('ubicacion').value = salon.ubicacion;
+      document.getElementById('capacidad').value = salon.capacidad;
+    }
+
+    function eliminarSalon(index) {
+      if (confirm('¿Estás seguro que deseas eliminar este salón?')) {
+        salones.splice(index, 1);
+        renderTabla();
+      }
+    }
+
+    renderTabla();
+  </script>
+</body>
+</html>
